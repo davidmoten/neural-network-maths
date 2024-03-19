@@ -14,7 +14,8 @@ Each layer $l$ has
 Common activation functions are:
 * sigmoid: $sigmoid(x) = \frac{1}{1 + e^{-x}}$
 * LeRU:  $leru(x) = x \text { if } x \gt 0 \text { else } 0$
-* swish: $swish(x) = x * sigmoid(x)$
+* swish, or SiLU: $swish(x) = x * sigmoid(x)$
+* GELU: $gelu(x) = \frac{x}{2}(1 + erf(\frac{x}{\sqrt{2}}))$
 
 A different activation function may be used for the final layer, especially for multiple classification (label) outputs:
 * softmax: $\sigma(v) = \frac{e^{v_i}}{\Sigma_j e^{v_j}},\text{ v a vector}$
