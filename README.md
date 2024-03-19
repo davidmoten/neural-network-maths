@@ -127,7 +127,7 @@ $\delta^{L}, \delta^{L-1}, .. , \delta^{1}$ in a _backwards_ pass (hence _back p
 ### Multi-classification (Softmax)
 Especially when word embeddings are being computed it may be desirable to limit the output vector element values to the 0-1 range (for example probabilities). A function is applied to get the final neural network output and feeds the cost function. *Softmax* and *Standard Normalization* are examples of such a transformation.
 
-Let's generalize this a bit. We are going to assume that the final activation function is the identity function and that we have a final transformation function $T$ that takes the output vector in the last layer and transforms it into a vector of the same size (for use in the cost function and as network output). An activation function is like this but only operates pointwise on the vector elements, without creating dependencies on other elements in the input vector that need to be considered in differentiation particularly.
+Let's generalize this a bit. We are going to assume that the final activation function is the identity function and that we have a final transformation function $F$ that takes the output vector in the last layer and transforms it into a vector of the same size (for use in the cost function and as network output). An activation function is like this but only operates pointwise on the vector elements, without creating dependencies on other elements in the input vector that need to be considered in differentiation particularly.
 
 We have this cost function for the system without this extra transformation:
 
@@ -139,31 +139,31 @@ Define
 
 Then define the cost taking into account the transformation as:
 
-&emsp; $C_T = f(T(x))$
+&emsp; $C_F = f(F(x))$
 
-Define the Jacobian matrix (derivative) of T as
+Define the Jacobian matrix (derivative) of F as
 
 ```math
 \begin{aligned}
-\nabla^{\mathrm T} = \begin{bmatrix}
-    \dfrac{\partial T_1}{\partial x_1} & \cdots & \dfrac{\partial T_1}{\partial x_n}\\
+\nabla^{\mathrm F} = \begin{bmatrix}
+    \dfrac{\partial F_1}{\partial x_1} & \cdots & \dfrac{\partial F_1}{\partial x_n}\\
     \vdots                             & \ddots & \vdots\\
-    \dfrac{\partial T_m}{\partial x_1} & \cdots & \dfrac{\partial T_m}{\partial x_n}
+    \dfrac{\partial F_m}{\partial x_1} & \cdots & \dfrac{\partial F_m}{\partial x_n}
 \end{bmatrix}
 \end{aligned}
 ```
 
 Then, bearing in mind that $a^L = z^L$
 
-&emsp; $\frac{\partial C_T}{\partial z^L_i} = \sum_j \frac{\partial T_i}{\partial x_i}(z^L)_j \frac{\partial f}{\partial x_j}(T(z^L))_j$
+&emsp; $\frac{\partial C_F}{\partial z^L_i} = \sum_j \frac{\partial F_i}{\partial x_i}(z^L)_j \frac{\partial f}{\partial x_j}(F(z^L))_j$
 
 That is
 
-&emsp; $\frac{\partial C_T}{\partial z^L} = \nabla^{\mathrm T}(z^L) f^{\prime}(T(z^L))$ 
+&emsp; $\frac{\partial C_F}{\partial z^L} = \nabla^{\mathrm F}(z^L) f^{\prime}(F(z^L))$ 
 
 In fact every layer honours a similar equation but the Jacobian matrix for an activation function only has entries on the diagonal so can be represented as a vector (and applied using the Hadamard element-wise product).
 
-So our cost function changes, the neural network is changed and the only change to the $\delta$ values will be that $\delta_T^L = \frac{\partial C_T}{\partial z^L}$ from above.
+So our cost function changes, the neural network is changed and the only change to the $\delta$ values will be that $\delta_F^L = \frac{\partial C_F}{\partial z^L}$ from above.
 
 The softmax function takes a vector and returns a vector:
 
