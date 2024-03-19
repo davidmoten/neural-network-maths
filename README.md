@@ -135,7 +135,7 @@ We have this cost function for the system without this extra transformation:
 
 Define 
 
-&emsp; $f^{\prime}(x) = \frac{\partial f}{\partial x}(x)$
+&emsp; $f^{\prime}(x) = \frac{\partial f}{\partial x}(x) = [\frac{\partial f}{\partial x_1}, \frac{\partial f}{\partial x_2}, ..]^T$
 
 Then define the cost taking into account the transformation as:
 
@@ -154,6 +154,10 @@ Define the Jacobian matrix (derivative) of T as
 ```
 
 Then, bearing in mind that $a^L = z^L$
+
+&emsp; $\frac{\partial C_T}{\partial z^L_i} = \sum_j \frac{\partial T_i}{\partial x_i}(z^L)_j \frac{\partial f}{\partial x_j}(T(z^L))_j$
+
+That is
 
 &emsp; $\frac{\partial C_T}{\partial z^L} = \nabla^{\mathrm T}(z^L) f^{\prime}(T(z^L))$ 
 
