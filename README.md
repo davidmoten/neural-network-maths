@@ -33,7 +33,7 @@ We start by assigning random values between -1 and 1 to the weight matrices.
 
 A training set is a set of input and expected result vector pairs $(v_1, e)$. We use those pairs (repeatedly even) and differential calculus to move the weights and biases so that the network outputs move closer and closer to the expected results. We will use a method called Gradient Descent to do this. 
  
-We define a function that we will minimize that when minimized represents a close match of output and desired output. That function is called the *cost function*.
+We define a function that we will minimize that when minimized represents a close match of output and desired output. That function is called the *cost function*. Here is one possibility which is the 1/2 of the square of the distance between the actual and expected vectors:
  
 &emsp; $C = \frac{1}{2}(a^{L}-e)\cdot(a^{L}-e)$
  
