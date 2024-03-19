@@ -1,4 +1,4 @@
-## Mathematical description of the workings of feed-forward neural networks
+## The mathematics of feed-forward neural networks
 
 With all the fuss about ChatGPT-3/4+ I decided it was time to get on top of what a (simple) neural network looks like, and work through the training calculations as well. I found backpropagation explanations to be somewhat vague and imprecise so I wrote this to sharpen things up a bit.
 
