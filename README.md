@@ -15,7 +15,7 @@ Common activation functions are:
 * sigmoid: $sigmoid(x) = \frac{1}{1 + e^{-x}}$
 * LeRU:  $leru(x) = x \text { if } x \gt 0 \text { else } 0$
 * swish, or SiLU: $swish(x) = x * sigmoid(x)$
-* GELU: $gelu(x) = \frac{x}{2}(1 + erf(\frac{x}{\sqrt{2}}))$
+* GELU: $gelu(x) = \frac{x}{2}(1 + erf(\frac{x}{\sqrt{2}}))$ (about [erf](https://mathworld.wolfram.com/Erf.html))
 
 A different activation function may be used for the final layer, especially for multiple classification (label) outputs:
 * softmax: $\sigma(v) = \frac{e^{v_i}}{\Sigma_j e^{v_j}},\text{ v a vector}$
